@@ -1,0 +1,77 @@
+
+.block {
+  width: 15vw;
+  height: 15vw;
+  background-color: #282C34;
+  border: 2px solid aqua;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px;
+   box-shadow: 1px 1px 0px black,
+                2px 2px 0px black,
+                3px 3px 0px black,
+                4px 4px 0px black,
+                5px 5px 0px black,
+                6px 6px 0px black,
+                7px 7px 0px black,
+                8px 8px 0px black,
+                9px 9px 0px aqua,
+                10px 10px 0px aqua;
+  z-index: 0;
+  transition: all .4s;
+  cursor: pointer;
+}
+.block:hover {
+  transform: scale(1.05);
+  background-color: #474f5e;
+
+}
+.block > ul {
+  margin: 0;
+  margin-top: 15px;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 30%;
+}
+
+
+.block > ul:last-child {
+ border-bottom: 2px solid aqua;
+ padding-bottom: 7px;
+}
+
+.block > ul > li {
+  padding: 0 0 0 10px;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  word-wrap: break-word;
+  color: white;
+  text-align: left;
+}
+
+.block > ul > li > span {
+  color: aqua;
+  font-weight: 700;
+  
+}
+
+.blockTransactions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  width: 100%;
+  border-top: 2px solid aqua;
+}
+.transactionNumber {
+    width: 80%;
+    height: 20%;
+    color: aqua;
+    font-size: 22px;
+}

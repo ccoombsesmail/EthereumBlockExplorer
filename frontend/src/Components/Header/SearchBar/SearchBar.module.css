@@ -1,0 +1,25 @@
+.searchBarWrapper {
+   border-radius: 20px;
+   border: 1px solid aqua;
+
+}
+
+.searchBarWrapper > input {
+   width: 50vw;
+  border-radius: 20px;
+  height: 40px;
+  background-color: #2D2D2D;
+  padding-left: 15px;
+  color: aqua;
+  font-size: 18px;
+  font-weight: 700;
+
+}
+
+.searchBarWrapper:focus, .searchBarWrapper > input:focus {
+    outline: none;
+}
+
+
+
+

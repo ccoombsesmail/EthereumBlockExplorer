@@ -1,0 +1,47 @@
+.sideBarWrapper {
+  min-width: 15vw;
+  top: 0;
+  left: 0;
+  height: calc( 100vh - 100px);
+  height: 100vh;
+  background-color: #282C34;
+  position: sticky;
+  border-radius: 0 5px 5px 0;
+}
+
+.sideBarList {
+  padding: 0;
+  margin: 100px 0 0 0;
+  display: flex;
+  justify-content: center;
+
+}
+
+.sideBarList > a > li {
+  list-style: none;
+  color: #282C34;
+  font-size: 20px;
+
+}
+
+/* .sideBarList > a > li:hover {
+  color: white;
+} */
+
+.sideBarList > a {
+  width: 65%;
+  padding: 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  border: 2px solid aqua;
+  background-color: aqua;
+
+}
+
+.sideBarList > a:hover {
+  background-color: #474f5e;
+  border: 2px solid white;
+  color: white;
+
+}

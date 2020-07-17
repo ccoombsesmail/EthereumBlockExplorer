@@ -1,0 +1,11 @@
+.blocksWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+  border-bottom: 2px solid black;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}

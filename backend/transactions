@@ -1,0 +1,30 @@
+(*types.Transaction)(0xc00038e240)({
+  data: (types.txdata) {
+   AccountNonce: (uint64) 86,
+   Price: (*big.Int)(0xc0004909c0)(94450000000),
+   GasLimit: (uint64) 50000,
+   Recipient: (*common.Address)(0xc000025540)((len=20 cap=20) 0x5A0fdCFA155AcD6E6F1d5B49D40b71F84b8de33b),
+   Amount: (*big.Int)(0xc000490a60)(10000000000000000),
+   Payload: ([]uint8) {
+   },
+   V: (*big.Int)(0xc000490a40)(27),
+   R: (*big.Int)(0xc000490a00)(74812117852499601100996945958814994928300400588398864308422941313666616943211),
+   S: (*big.Int)(0xc000490a20)(22108367543382948903794861307985916549137577055243208095677711737653689799352),
+   Hash: (*common.Hash)(0xc000025520)((len=32 cap=32) 0x6d527fe6b7d56c591ebcaf2f96df78915a52da08937b3b1394358bcaaf173e69)
+  },
+  hash: (atomic.Value) {
+   v: (interface {}) <nil>
+  },
+  size: (atomic.Value) {
+   v: (interface {}) <nil>
+  },
+  from: (atomic.Value) {
+   v: (types.sigCache) {
+    signer: (*ethclient.senderFromServer)(0xc0004ae480)({
+     addr: (common.Address) (len=20 cap=20) 0xD9e9e1Bf757F669BF64080c5879F66285FF849B9,
+     blockhash: (common.Hash) (len=32 cap=32) 0x93f9b19ddf1955249c7f09089451c39424f7a6d17d62cacef5eaf2573f5c52aa
+    }),
+    from: (common.Address) (len=20 cap=20) 0xD9e9e1Bf757F669BF64080c5879F66285FF849B9
+   }
+  }
+ }),

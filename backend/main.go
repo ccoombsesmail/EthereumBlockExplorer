@@ -95,7 +95,6 @@ func subToBlockHeader(blocksCollection *mongo.Collection, transactionsCollection
 func main() {
 
 	mongoClient, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://user1:" + config.GetKey() + "@cluster0.4mnma.mongodb.net/<blockHistoryDB>?retryWrites=true&w=majority"))
-	// mongoClient, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://user1:Arsenalarsenal1!@cluster0.4mnma.mongodb.net/<blockHistoryDB>?retryWrites=true&w=majority"))
 	if err != nil {
 			log.Fatal(err)
 	}

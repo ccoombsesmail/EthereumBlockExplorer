@@ -49,7 +49,7 @@ class RecentBlocks extends React.Component {
 
   async loadRecentBlocks() {
     try {
-      const res = await axios.get('https://eth-blockexplorer-go.uc.r.appspot.com/api/recentblocks')
+      const res = await axios.get('/api/recentblocks')
       this.setState({blocks: res.data, isVisible: true})
     } catch (e) {
       console.log(e)

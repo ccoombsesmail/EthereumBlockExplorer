@@ -7,7 +7,7 @@ import (
 	"time"
 	"net/http"
 	"encoding/json"
-	"BlockExplorer/backend/typehelper"
+	"EthereumBlockExplorer/typehelper"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/core/types"
 	"go.mongodb.org/mongo-driver/mongo"

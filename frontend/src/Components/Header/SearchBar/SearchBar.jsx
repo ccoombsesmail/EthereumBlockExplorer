@@ -28,7 +28,7 @@ const SearchBar = (props) => {
   }
 
   return (
-    <form className={styles.searchBarWrapper} onSubmit={handleSubmit} spellcheck="false">
+    <form className={styles.searchBarWrapper} onSubmit={handleSubmit} spellCheck="false">
         <input onChange={handleUpdate} type="text" value={input} placeholder="Enter Tx Hash, Sender Address, Receiver Address..."/>
     </form>
   )

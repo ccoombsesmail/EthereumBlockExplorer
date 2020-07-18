@@ -1,4 +1,4 @@
-module BlockExplorer/backend
+module EthereumBlockExplorer
 
 go 1.14
 

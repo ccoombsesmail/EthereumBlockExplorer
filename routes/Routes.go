@@ -11,7 +11,7 @@ import (
 	// "go.mongodb.org/mongo-driver/bson/primitive"
 	"github.com/davecgh/go-spew/spew"
 	"encoding/json"
-	"BlockExplorer/backend/typehelper"
+	"EthereumBlockExplorer/typehelper"
 
 
 )

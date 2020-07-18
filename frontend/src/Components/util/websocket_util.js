@@ -6,8 +6,9 @@
 
 let connect = () => {
   let socket
+  console.log(process.env)
   if (process.env.NODE_ENV === "production") {
-    socket = new WebSocket("wss://eth-blockexplorer-go.uc.r.appspot.com/ws");
+    socket = new WebSocket("wss://guarded-plains-39628.herokuapp.com/ws");
   } else {
     socket = new WebSocket("ws://localhost:5000/ws")
   }

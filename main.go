@@ -42,7 +42,7 @@ func main() {
 	// routes.SetupBlockRoutes(mongoClient)
 	// routes.SetupTransactionRoutes(mongoClient)
 	// go websockets.SubToBlockHeader(blocksCollection, transactionsCollection)
-	// fs := http.FileServer(http.Dir("./build"))
+	fs := http.FileServer(http.Dir("./build"))
 	http.Handle("/", fs)
 	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("hello world"))

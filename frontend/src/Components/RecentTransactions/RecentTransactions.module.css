@@ -8,6 +8,7 @@
   margin: 10px;
   border-radius: 5px;
   min-width: 70vw;
+  max-width: 80vw;
   background-color: #282C34;
   transition: all .4s;
   cursor: pointer;
@@ -23,6 +24,7 @@
   display: flex;
   justify-content: flex-start;
   color: aqua;
+  padding: 10px;
 }
 
 .transaction > ul > li {

@@ -11,28 +11,33 @@ const TransactionShow = () => {
   let location = useLocation();
   console.log(location)
   useEffect(() => {
+    if (location.state) {
     setTransaction(location.state.transaction)
+    }
   }, [])
 
   return (
-    <Animated animationIn="fadeInUp" animationOut="fadeOutDown" >
-      <div className={styles.transactionWrapper}>
-        { 
-        transaction !== null ? (
-        <ul className={styles.transactionInfo}>
-          <li>
-            {"From: " + transaction.From}
-          </li>
-          <li>
-            {"To: " + transaction.To}
-          </li>
-          <li>
-            {"Value: " + (Number(transaction.Value) / 1000000000000000000).toString() + " ETH"}
-          </li>
-        </ul> ) : null
-        }
-      </div>
-    </Animated>
+    <div className={styles.transactionWrapper}>
+      <Animated animationIn="fadeInUp" animationOut="fadeOutDown" className={styles.animationWrapper} >
+          { 
+          transaction !== null ? (
+          <ul className={styles.transactionInfo}>
+            <li>
+              {"TxHash: " + transaction.From}
+            </li>
+            <li>
+              {"From: " + transaction.From}
+            </li>
+            <li>
+              {"To: " + transaction.To}
+            </li>
+            <li>
+              {"Value: " + (Number(transaction.Value) / 1000000000000000000).toString() + " ETH"}
+            </li>
+          </ul> ) : null
+          }
+      </Animated>
+    </div>
   )
 }
 

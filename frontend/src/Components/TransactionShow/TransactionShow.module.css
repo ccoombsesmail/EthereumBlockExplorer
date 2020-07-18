@@ -1,4 +1,26 @@
 .transactionInfo {
   display: flex;
   flex-direction: column;
+  width: 60%;
+  border: 1px solid black;
+  height: 50vh;
+}
+
+
+.transactionInfo > li {
+  list-style: none;
+  margin: 20px;
+
+}
+.transactionWrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.animationWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
 }

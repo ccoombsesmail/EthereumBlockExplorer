@@ -40,7 +40,7 @@ func SetupBlockRoutes(c *mongo.Client) {
 		options.SetLimit(100)
 		cursor, err := blocksCollection.Find(context.Background(), bson.D{}, options)
 		if err != nil {
-				log.Fatal(err)
+				spew.Dump(err)
 		}
 		blocks := make([]typehelper.BlockData, 0)
 		for cursor.Next(context.Background()) {
@@ -64,14 +64,19 @@ func SetupBlockRoutes(c *mongo.Client) {
 
 		cursor, err := blocksCollection.Find(context.Background(), bson.D{}, options)
 		if err != nil {
-				log.Fatal(err)
+			spew.Dump(err)
+			spew.Dump("api/recent")
+
+
 		}
 		blocks := make([]typehelper.BlockData, 0)
 		for cursor.Next(context.Background()) {
 			var blockData typehelper.BlockData 
 			err = cursor.Decode(&blockData)
 			if err != nil {
-				log.Fatal(err)
+				spew.Dump(err)
+				spew.Dump("api/recent2")
+
 			}
 			blocks = append(blocks, blockData)
 		}

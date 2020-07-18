@@ -97,12 +97,13 @@ func addBlockToDb(b *typehelper.BlockData, c *mongo.Collection, t *mongo.Collect
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	blockDataResult, err2 := c.InsertOne(ctx, *b)
 	if err2 != nil {
-		log.Fatal(err2)
+		spew.Dump(err2)
+		spew.Dump("Add block to db")
 	}
 	if len(txs) != 0 {
 		_, err3 := t.InsertMany(ctx, txs)
 		if err3 != nil {
-			log.Fatal(err3)
+			spew.Dump(err3)
 		}
 	}
 	spew.Dump(blockDataResult)

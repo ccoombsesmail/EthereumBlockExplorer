@@ -38,7 +38,7 @@ func main() {
 			port = "5000"
 			log.Printf("Defaulting to port %s", port)
     }
-	http.HandleFunc("/ws", websockets.ServeWs)
+	// http.HandleFunc("/ws", websockets.ServeWs)
 	routes.SetupBlockRoutes(mongoClient)
 	routes.SetupTransactionRoutes(mongoClient)
 	go websockets.SubToBlockHeader(blocksCollection, transactionsCollection)

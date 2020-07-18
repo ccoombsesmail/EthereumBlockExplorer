@@ -34,6 +34,11 @@ func SetupBlockRoutes(c *mongo.Client) {
 
 	})
 
+	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) { 
+		spew.Dump(c)
+	})
+
+
 	http.HandleFunc("/api/blocks", func(w http.ResponseWriter, r *http.Request) {
 		options := options.Find()
 		options.SetSort(bson.D{{"_id", -1}})

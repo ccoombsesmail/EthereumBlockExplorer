@@ -1,1 +1,1 @@
-web: bin/EthereumBlockExplorer
+web: EthereumBlockExplorer

@@ -19,14 +19,14 @@ import (
 
 func SetupBlockRoutes(c *mongo.Client) {
 
-	filter := bson.D{{"hash", "0x8e2e724849f406b21bfe3d9661b5ac326237d3a362aa9195c49195727214f72a"}}
+	filter := bson.D{{"hash", "0xbf2f5e0820ea24163176ddff953ee950ef940ff7aad5258427d25b2131b294fa"}}
 	blocksCollection := c.Database("blockHistoryDB").Collection("blocks")
 	var block typehelper.BlockData
 	http.HandleFunc("/api/block", func(w http.ResponseWriter, r *http.Request) {
 		err := blocksCollection.FindOne(context.TODO(), filter).Decode(&block)
-		// err := blocksCollection.FindId(primitive.ObjectIDFromHex).One(&block)
 		if err != nil {
-				log.Fatal(err)
+				spew.Dump(blocksCollection)
+				spew.Dump(err)
 		}
 		data, _ := json.Marshal(block)
 		w.Write(data)

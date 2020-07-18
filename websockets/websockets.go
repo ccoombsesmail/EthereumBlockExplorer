@@ -27,7 +27,7 @@ var upgrader = websocket.Upgrader{
 func ServeWs(w http.ResponseWriter, r *http.Request) {
 	ws, err := upgrader.Upgrade(w, r, nil)
     if err != nil {
-        log.Println(err)
+        spew.Dump(err)
 	}
 	reader(ws)
 }

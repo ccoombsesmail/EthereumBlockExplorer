@@ -1,4 +1,4 @@
-
+import ReconnectingWebSocket from "reconnecting-websocket"
 
 
 
@@ -8,9 +8,9 @@ let connect = () => {
   let socket
   console.log(process.env)
   if (process.env.NODE_ENV === "production") {
-    socket = new WebSocket("wss://guarded-plains-39628.herokuapp.com/ws");
+    socket = new ReconnectingWebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host + "/ws");;
   } else {
-    socket = new WebSocket("ws://localhost:5000/ws")
+    socket = new ReconnectingWebSocket("ws://localhost:5000/ws")
   }
 
   console.log("Attempting Connection...");

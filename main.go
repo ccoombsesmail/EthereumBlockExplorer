@@ -7,7 +7,7 @@ import (
 	"net/http"
 	// "EthereumBlockExplorer/routes"
 	// "EthereumBlockExplorer/websockets"
-	// "go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo"
 	// "go.mongodb.org/mongo-driver/mongo/options"
 	"os"
 	"EthereumBlockExplorer/config"
@@ -17,10 +17,10 @@ import (
 
 func main() {
 
-	// mongoClient, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://user1:" + config.GetKey() + "@cluster0.4mnma.mongodb.net/<blockHistoryDB>?retryWrites=true&w=majority"))
-	// if err != nil {
-	// 		log.Fatal(err)
-	// }
+	mongoClient, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://user1:" + config.GetKey() + "@cluster0.4mnma.mongodb.net/<blockHistoryDB>?retryWrites=true&w=majority"))
+	if err != nil {
+			log.Fatal(err)
+	}
 
 	// ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	// err = mongoClient.Connect(ctx)

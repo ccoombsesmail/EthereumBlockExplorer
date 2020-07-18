@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import RecentTransactionsItem from './RecentTransactionsItem/RecentTransactionsItem'
 import styles from './RecentTransactions.module.css'
 import axios from 'axios';
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -45,7 +45,12 @@ const RecentTransactions = () => {
         {
           transactions.map((transaction, i) => {
             return (
-              <RecentTransactionsItem key={i} time={i} transaction={transaction} isVisible={isVisible} />
+              <Link to={{
+                pathname: `/transaction/${transaction.Hash}`,
+                state: { transaction: transaction }
+              }}> 
+                <RecentTransactionsItem key={i} time={i} transaction={transaction} isVisible={isVisible} />
+              </Link>
             )
           })
         }

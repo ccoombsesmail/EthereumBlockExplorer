@@ -1,0 +1,4 @@
+.transactionInfo {
+  display: flex;
+  flex-direction: column;
+}

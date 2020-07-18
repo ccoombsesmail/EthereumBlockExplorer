@@ -6,11 +6,11 @@ import (
 	"time"
 	"net/http"
 	"EthereumBlockExplorer/routes"
-	"EthereumBlockExplorer/config"
 	"EthereumBlockExplorer/websockets"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"os"
+	"EthereumBlockExplorer/config"
 )
 
 

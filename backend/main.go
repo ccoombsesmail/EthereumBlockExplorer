@@ -10,6 +10,7 @@ import (
 	"BlockExplorer/backend/websockets"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"os"
 )
 
 
@@ -32,13 +33,22 @@ func main() {
 	blocksCollection := db.Collection("blocks")
 	transactionsCollection := db.Collection("transactions")
 
-
+  port := os.Getenv("PORT")
+ 	if port == "" {
+                port = "5000"
+                log.Printf("Defaulting to port %s", port)
+        }
 	http.HandleFunc("/ws", websockets.ServeWs)
 	routes.SetupBlockRoutes(mongoClient)
 	routes.SetupTransactionRoutes(mongoClient)
 	go websockets.SubToBlockHeader(blocksCollection, transactionsCollection)
-	log.Fatal(http.ListenAndServe(":5000", nil))
-
+	fs := http.FileServer(http.Dir("./build"))
+	http.Handle("/", fs)
+	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("hello world"))
+	})
+	log.Fatal(http.ListenAndServe(":"+port, nil))
+	
 }
 
 

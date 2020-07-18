@@ -87,7 +87,10 @@ func SetupTransactionRoutes(c *mongo.Client) {
 	transactionsCollection := c.Database("blockHistoryDB").Collection("transactions")
 
 	http.HandleFunc("/api/transactions", func(w http.ResponseWriter, r *http.Request) {
-		searchQuery := r.URL.Query()["searchQuery"][0]
+		searchQuery := ""
+		if len(r.URL.Query()["searchQuery"]) != 0 {
+			searchQuery = r.URL.Query()["searchQuery"][0]
+		}
 		spew.Dump(searchQuery)
 		
 

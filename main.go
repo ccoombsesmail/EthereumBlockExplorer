@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"os"
-	"EthereumBlockExplorer/config"
+	// "EthereumBlockExplorer/config"
 )
 
 
@@ -18,7 +18,14 @@ import (
 func main() {
 
 	// mongoClient, err := mongo.NewClient(options.Client().ApplyURI("mongodb://heroku_pfznv2c0:m2c0tf7v719asg1c0andhkha85@ds035177.mlab.com:35177/heroku_pfznv2c0?retryWrites=true&w=majority"))
-	mongoClient, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://user1:" + config.GetKey() + "@cluster0.4mnma.mongodb.net/<blockHistoryDB>?retryWrites=true&w=majority"))
+	var mongoURI string
+	if (os.Getenv("MONGODB_URI") == "") {
+		// mongoURI = "mongodb+srv://user1:" + config.GetKey() + "@cluster0.4mnma.mongodb.net/<blockHistoryDB>?retryWrites=true&w=majority"
+		mongoURI = ""
+	} else {
+		mongoURI = os.Getenv("MONGODB_URI")
+	}
+	mongoClient, err := mongo.NewClient(options.Client().ApplyURI(mongoURI))
 	if err != nil {
 			log.Fatal(err)
 	}

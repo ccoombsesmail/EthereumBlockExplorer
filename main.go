@@ -53,9 +53,6 @@ func main() {
 
 	fs := http.FileServer(http.Dir("./build"))
 	http.Handle("/", fs)
-	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(config.GetKey()))
-	})
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 	
 }

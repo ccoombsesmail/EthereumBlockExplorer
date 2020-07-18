@@ -1,12 +1,12 @@
 package main
 
 import (
-	// "context"
+	"context"
 	"log"
-	// "time"
+	"time"
 	"net/http"
-	// "EthereumBlockExplorer/routes"
-	// "EthereumBlockExplorer/websockets"
+	"EthereumBlockExplorer/routes"
+	"EthereumBlockExplorer/websockets"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"os"
@@ -22,26 +22,27 @@ func main() {
 			log.Fatal(err)
 	}
 
-	// ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	// err = mongoClient.Connect(ctx)
-	// if err != nil {
-	// 		log.Fatal(err)
-	// }
-	// defer mongoClient.Disconnect(ctx)
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	err = mongoClient.Connect(ctx)
+	if err != nil {
+			log.Fatal(err)
+	}
+	defer mongoClient.Disconnect(ctx)
 
-	// db := mongoClient.Database("blockHistoryDB")
-	// blocksCollection := db.Collection("blocks")
-	// transactionsCollection := db.Collection("transactions")
+	db := mongoClient.Database("blockHistoryDB")
+	blocksCollection := db.Collection("blocks")
+	transactionsCollection := db.Collection("transactions")
 
   port := os.Getenv("PORT")
  	if port == "" {
 			port = "5000"
 			log.Printf("Defaulting to port %s", port)
     }
-	// http.HandleFunc("/ws", websockets.ServeWs)
-	// routes.SetupBlockRoutes(mongoClient)
-	// routes.SetupTransactionRoutes(mongoClient)
-	// go websockets.SubToBlockHeader(blocksCollection, transactionsCollection)
+	http.HandleFunc("/ws", websockets.ServeWs)
+	routes.SetupBlockRoutes(mongoClient)
+	routes.SetupTransactionRoutes(mongoClient)
+	go websockets.SubToBlockHeader(blocksCollection, transactionsCollection)
+
 	fs := http.FileServer(http.Dir("./build"))
 	http.Handle("/", fs)
 	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {

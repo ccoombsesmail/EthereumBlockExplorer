@@ -31,6 +31,7 @@ const RecentTransactions = () => {
       return await loadRecentTransactions() 
     } catch (e) {
       console.log(e)
+      loadRecentTransactions() 
     }
   }
 

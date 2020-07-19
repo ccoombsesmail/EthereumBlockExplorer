@@ -17,7 +17,6 @@ let connect = () => {
 
   socket.onopen = () => {
     console.log("Successfully Connected");
-    socket.send("test")
   };
 
   socket.onclose = event => {

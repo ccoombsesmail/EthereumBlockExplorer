@@ -5,7 +5,7 @@
 }
 
 .searchBarWrapper > input {
-   width: 50vw;
+  width: 50vw;
   border-radius: 20px;
   height: 40px;
   background-color: #2D2D2D;
@@ -13,6 +13,8 @@
   color: aqua;
   font-size: 18px;
   font-weight: 700;
+  border: none;
+  outline: none;
 
 }
 

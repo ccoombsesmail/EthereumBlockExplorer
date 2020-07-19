@@ -2,7 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 30px;
-  border-bottom: 2px solid black;
+  justify-content: center;
+  /* border-bottom: 2px solid black; */
 }
 
 .wrapper {
@@ -10,4 +11,11 @@
   flex-direction: column;
   flex-grow: 1;
 
+}
+
+.wrapper > hr {
+  width: 90%;
+  background-color: rgb(48,48,50);
+  margin-top: 10vh;
+  height: .5px;
 }

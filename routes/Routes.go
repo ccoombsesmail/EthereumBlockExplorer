@@ -2,7 +2,6 @@ package routes
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"go.mongodb.org/mongo-driver/mongo"
 	"log"
@@ -22,23 +21,22 @@ import (
 
 func SetupBlockRoutes(c *mongo.Client) {
 
-	filter := bson.D{{"hash", "0xbf2f5e0820ea24163176ddff953ee950ef940ff7aad5258427d25b2131b294fa"}}
 	blocksCollection := c.Database("blockHistoryDB").Collection("blocks")
-	var block typehelper.BlockData
+
 	http.HandleFunc("/api/block", func(w http.ResponseWriter, r *http.Request) {
+		var block typehelper.BlockData
+		hash := ""
+		if len(r.URL.Query()["hash"]) != 0 {
+			hash = r.URL.Query()["hash"][0]
+		}
+		filter := bson.D{{"hash", hash}}
+
 		err := blocksCollection.FindOne(context.TODO(), filter).Decode(&block)
 		if err != nil {
-				spew.Dump(blocksCollection)
 				spew.Dump(err)
 		}
 		data, _ := json.Marshal(block)
 		w.Write(data)
-		fmt.Printf("Found a single document: %+v\n", block)
-
-	})
-
-	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) { 
-		spew.Dump(c)
 	})
 
 
@@ -73,9 +71,6 @@ func SetupBlockRoutes(c *mongo.Client) {
 		cursor, err := blocksCollection.Find(context.Background(), bson.D{}, options)
 		if err != nil {
 			spew.Dump(err)
-			spew.Dump("api/recent")
-
-
 		}
 		blocks := make([]typehelper.BlockData, 0)
 		for cursor.Next(context.Background()) {
@@ -83,8 +78,6 @@ func SetupBlockRoutes(c *mongo.Client) {
 			err = cursor.Decode(&blockData)
 			if err != nil {
 				spew.Dump(err)
-				spew.Dump("api/recent2")
-
 			}
 			blocks = append(blocks, blockData)
 		}
@@ -104,9 +97,7 @@ func SetupTransactionRoutes(c *mongo.Client, ethClient *ethclient.Client) {
 		if len(r.URL.Query()["searchQuery"]) != 0 {
 			searchQuery = r.URL.Query()["searchQuery"][0]
 		}
-		spew.Dump(searchQuery)
 		
-
 		cursor, err := transactionsCollection.Find(context.Background(), bson.M{
 		"$or": []bson.M{
 			bson.M{"hash": searchQuery},

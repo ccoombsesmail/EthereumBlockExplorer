@@ -6,7 +6,7 @@ import styles from './RecentBlocks.module.css'
 import "animate.css/animate.min.css";
 import { connect } from "../util/websocket_util";
 import RecentTransactions from '../RecentTransactions/RecentTransactions';
-
+import { Link } from 'react-router-dom'
 
 
 class RecentBlocks extends React.Component {
@@ -72,11 +72,18 @@ class RecentBlocks extends React.Component {
           {
             blocks.map((block,i) => {
               return (
-                <RecentBlocksItem key={i} time={i} block={block} isVisible={this.state.isVisible} />
+                <Link key={i} to={{
+                  pathname: `/block/${block.Hash}`,
+                  state: { block: block }
+                }}>
+                  <RecentBlocksItem time={i} block={block} isVisible={this.state.isVisible} />
+                </Link>
               )
             })
           }
         </div>
+        <hr />
+
         <div>
           <h1>Recent Transactions</h1>
           <RecentTransactions/>

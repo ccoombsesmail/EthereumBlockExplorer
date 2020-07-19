@@ -4,7 +4,6 @@ import "animate.css/animate.min.css";
 import { Animated } from "react-animated-css";
 
 const BlocksIndexItem = ({block, time}) => {
-  console.log(block)
   return (
     <Animated animationIn="fadeInUpBig" animationInDuration={400} animationInDelay={time * 40}  >
       <div className={styles.block}>

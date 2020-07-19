@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 30%;
+  min-height: 35%;
 }
 
 
@@ -46,19 +46,22 @@
 }
 
 .block > ul > li {
-  padding: 0 0 0 10px;
+  padding: 0 0 5px 10px;
   margin: 0;
   list-style: none;
   width: 100%;
   word-wrap: break-word;
   color: white;
   text-align: left;
+  font-size: .9vw;
+
 }
 
 .block > ul > li > span {
   color: aqua;
   font-weight: 700;
-  
+  font-size: .9vw;
+
 }
 
 .blockTransactions {
@@ -73,5 +76,5 @@
     width: 80%;
     height: 20%;
     color: aqua;
-    font-size: 22px;
+    font-size: 1.1vw;
 }

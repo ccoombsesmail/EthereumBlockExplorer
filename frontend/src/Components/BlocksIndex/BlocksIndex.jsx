@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import BlocksIndexItem from './BlocksIndexItem/BlocksIndexItem'
 import styles from './BlocksIndex.module.css'
-
+import { Link } from 'react-router-dom'
 class BlocksIndex extends React.Component {
 
   constructor() {
@@ -26,7 +26,14 @@ class BlocksIndex extends React.Component {
       <div className = {styles.blocksWrapper}>
         {
           blockData.map((block, i) => {
-            return <BlocksIndexItem time = {i} block = {block}/>
+            return ( 
+              <Link key={i} to={{
+                pathname: `/block/${block.Hash}`,
+                state: { block: block }
+              }}>
+                <BlocksIndexItem key={i} time = {i} block = {block}/>
+              </Link>
+            )
           })
         }
       </div>

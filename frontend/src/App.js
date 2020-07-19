@@ -7,6 +7,7 @@ import Header from './Components/Header/Header'
 import { Route, Switch } from 'react-router-dom'
 import TransactionsIndex from './Components/TransactionsIndex/TransactionsIndex';
 import TransactionShow from './Components/TransactionShow/TransactionShow';
+import BlockShow from './Components/BlockShow/BlockShow';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/index" component={BlockIndex} />  
           <Route path="/transactions/:search" component={TransactionsIndex} />  
           <Route path="/transaction/:hash" component={TransactionShow} />  
+          <Route path="/block/:hash" component={BlockShow} />  
           <Route path="/" component={RecentBlocks} />  
         </Switch>
       </div>

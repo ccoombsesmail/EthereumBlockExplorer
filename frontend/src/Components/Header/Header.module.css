@@ -2,19 +2,56 @@
   box-sizing: border-box;
   width: 100vw;
   min-height: 60px;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
+  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
 
 }
 
 
 .left {
-  margin-left: 20px;
+  margin-left: 40px;
+  /* border: 3px solid black;
+  padding: 8px; */
+}
+
+.left > a > svg {
+  margin-left: 10px;
+}
+
+
+.left > a {
+  font-family: monospace;
+  font-size: 1.15vw;
+  color: black;
+  font-weight: 700;
+  padding: 8px;
+  border: 3px solid black;
+  display: flex;
+  align-items: center;
+
 }
 
 .right {
-  margin-right: 20px;
+  margin-right: 40px;
+}
+
+.linkWrapper {
+  display: flex;
+  width: 10vw;
+  justify-content: space-evenly;
+
+}
+
+.linkWrapper > li {
+  list-style: none;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }

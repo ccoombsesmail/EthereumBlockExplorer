@@ -49,11 +49,8 @@ func reader(conn *websocket.Conn) {
   }
 }
 
-func SubToBlockHeader(blocksCollection *mongo.Collection, transactionsCollection *mongo.Collection) {
-	client, err := ethclient.Dial("wss://mainnet.infura.io/ws/v3/7fee20f62b264b7ab41d4fb69dde3c76")
-	if err != nil {
-		log.Fatal(err)
-	}
+func SubToBlockHeader(blocksCollection *mongo.Collection, transactionsCollection *mongo.Collection, client *ethclient.Client) {
+
 
 	// tx, err4 := client.TransactionReceipt(context.Background(), common.HexToHash("0x12400a58cf1b6a3b48a6ba2630be571f3e98b190ad9eb4a71a7e168fa1dd817e"))
 	// if err4 != nil {

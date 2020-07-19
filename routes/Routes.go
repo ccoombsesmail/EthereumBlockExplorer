@@ -12,6 +12,9 @@ import (
 	"github.com/davecgh/go-spew/spew"
 	"encoding/json"
 	"EthereumBlockExplorer/typehelper"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/common"
+	"strconv"
 
 
 )
@@ -93,7 +96,7 @@ func SetupBlockRoutes(c *mongo.Client) {
 }
 
 
-func SetupTransactionRoutes(c *mongo.Client) {
+func SetupTransactionRoutes(c *mongo.Client, ethClient *ethclient.Client) {
 	transactionsCollection := c.Database("blockHistoryDB").Collection("transactions")
 
 	http.HandleFunc("/api/transactions", func(w http.ResponseWriter, r *http.Request) {
@@ -127,5 +130,19 @@ func SetupTransactionRoutes(c *mongo.Client) {
 			w.Write(data)
 		}
 	})
+
+	http.HandleFunc("/api/gasused", func(w http.ResponseWriter, r *http.Request) { 
+		txHash := ""
+		if len(r.URL.Query()["txhash"]) != 0 {
+			txHash = r.URL.Query()["txhash"][0]
+		}
+		tx, err := ethClient.TransactionReceipt(context.Background(), common.HexToHash(txHash))
+		if err != nil {
+			spew.Dump(err)
+		} else {
+			w.Write([]byte(strconv.FormatUint(tx.GasUsed, 10)))
+		}
+	})
+
 }
 

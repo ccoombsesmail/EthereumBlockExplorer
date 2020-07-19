@@ -1,26 +1,50 @@
 .transactionInfo {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 60%;
-  border: 1px solid black;
   height: 50vh;
+  border-radius: 6px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color: #282C34;
+  background-color:white;
+  color: #21FA90;
+  color: black;
+  font-size: 1vw;
+
 }
 
 
 .transactionInfo > li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   list-style: none;
-  margin: 20px;
+  width: 100%;
+  /* margin: 20px 0 20px 0; */
+  border-bottom: .5px solid grey;
+  padding: 10px 0 10px 10px;
+  box-sizing: border-box;
 
 }
+.transactionInfo > li > span {
+  color: #21FA90;
+  font-weight: 700;
+  padding-right: 5px;
+}
+
 .transactionWrapper {
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  background-color: #FBFAFC;
+
 }
 
 .animationWrapper {
   width: 100%;
   display: flex;
-  justify-content: center;
-  margin-top: 200px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
 }

@@ -2,37 +2,73 @@
 import React, { useState, useEffect } from 'react'
 import styles from './TransactionShow.module.css'
 
+import axios from 'axios'
 import "animate.css/animate.min.css";
 import { Animated } from "react-animated-css";
 import { useLocation } from 'react-router-dom'
+import { FaMicroscope } from 'react-icons/fa';
 
-const TransactionShow = () => {
+
+const TransactionShow = ({match}) => {
   const [transaction, setTransaction] = useState(null)
+  const [gasUsed, setgasUsed] = useState(null)
   let location = useLocation();
-  console.log(location)
   useEffect(() => {
+    getGatUsed(match.params.hash)
     if (location.state) {
-    setTransaction(location.state.transaction)
+      let tx = location.state.transaction
+      setTransaction(tx)
+    } else {
+      axios.get('/api/transactions', {
+        params: {
+          searchQuery: match.params.hash
+        }
+      }).then((res) => {
+        setTransaction(res.data[0])
+      })    
     }
   }, [])
 
+  const getGatUsed = (hash) => {
+    axios.get('/api/gasused', {
+      params: {
+        txhash: hash
+        }
+    }).then((res) => {
+      setgasUsed(res.data)
+    })
+  }
+
+
   return (
     <div className={styles.transactionWrapper}>
-      <Animated animationIn="fadeInUp" animationOut="fadeOutDown" className={styles.animationWrapper} >
+      
+      <Animated animationIn="fadeInUp" animationOut="fadeOutDown" animationInDuration={1500} className={styles.animationWrapper} >
+        <FaMicroscope style={{ fontSize: '50px', color: '#21FA90' }} />
+        <h1>Transactions Details</h1>
           { 
           transaction !== null ? (
           <ul className={styles.transactionInfo}>
             <li>
-              {"TxHash: " + transaction.From}
+              <span>TxHash:</span>{transaction.Hash}
             </li>
             <li>
-              {"From: " + transaction.From}
+                <span>From:</span>{transaction.From}
+            </li> 
+            <li>
+                <span>To:</span>{transaction.To}
             </li>
             <li>
-              {"To: " + transaction.To}
+              <span>Value:</span> {(Number(transaction.Value) / 1000000000000000000).toString() + " ETH"}
             </li>
             <li>
-              {"Value: " + (Number(transaction.Value) / 1000000000000000000).toString() + " ETH"}
+              <span>Gas Limit:</span>{transaction.GasLimit}
+            </li>  
+            <li>
+              <span>Gas Used:</span>{gasUsed}
+            </li>
+            <li>
+              <span>Size:</span>{transaction.Size}
             </li>
           </ul> ) : null
           }

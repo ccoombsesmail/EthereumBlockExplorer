@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import TransactionsItem from '../RecentTransactions/RecentTransactionsItem/RecentTransactionsItem'
 import styles from './TransactionsIndex.module.css'
 import axios from 'axios';
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 
 
@@ -33,7 +33,12 @@ const TransactionsIndex = (props) => {
       {
         transactions.map((transaction, i) => {
           return (
-            <TransactionsItem key={i} time={i} transaction={transaction} isVisible={true} />
+            <Link key={i} to={{
+              pathname: `/transaction/${transaction.Hash}`,
+              state: { transaction: transaction }
+            }}> 
+              <TransactionsItem time={i} transaction={transaction} isVisible={true} />
+            </Link>
           )
         })
       }

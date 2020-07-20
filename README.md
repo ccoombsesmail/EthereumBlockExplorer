@@ -3,7 +3,7 @@ Block Scout
 
 Block Scout is an Ethereum block explorer providing realtime block and transaction information.
 
-Live site: https://guarded-plains-39628.herokuapp.com
+Live site: https://block-scout.herokuapp.com
 
 
 ### Technologies

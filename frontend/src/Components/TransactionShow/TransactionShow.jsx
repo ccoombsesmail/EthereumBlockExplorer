@@ -43,7 +43,7 @@ const TransactionShow = ({match}) => {
   return (
     <div className={styles.transactionWrapper}>
       
-      <Animated animationIn="fadeInUp" animationOut="fadeOutDown" animationInDuration={1500} className={styles.animationWrapper} >
+      <Animated animationIn="fadeInUp" animationOut="fadeOutDown" animationInDuration={1500} animationInDelay={300} className={styles.animationWrapper} >
         <FaMicroscope style={{ fontSize: '50px', color: '#21FA90' }} />
         <h1>Transactions Details</h1>
           { 

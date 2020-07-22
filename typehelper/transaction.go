@@ -5,7 +5,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strconv"
 	"fmt"
-	"math/big"
+	// "math/big"
 
 )
 
@@ -21,9 +21,9 @@ func StructureTransactionData(tx *types.Transaction) *TransactionData {
 	} else {
 		to = tx.To().String()
 	}
-	price := new(big.Int).SetUint64(tx.Gas())
-	var txfee big.Int
-	txfee.Mul(price, tx.GasPrice())
+	// price := new(big.Int).SetUint64(tx.Gas())
+	// var txfee big.Int
+	// txfee.Mul(price, tx.GasPrice())
 
 	transaction := &TransactionData {
 		Hash : tx.Hash().String(),
@@ -31,8 +31,8 @@ func StructureTransactionData(tx *types.Transaction) *TransactionData {
 		To: to,
 		Value: strconv.FormatUint(tx.Value().Uint64(), 10),
 		Size: tx.Size().String(),
-		GasLimit: tx.Gas(),
-		TxFee: txfee.String()}
+		GasLimit: tx.Gas()}
+		// TxFee: txfee.String()
 	return transaction
 }
 
@@ -45,7 +45,7 @@ type TransactionData struct {
 	Value string  `bson:"value"`
 	Size string  `bson:"size"`
 	GasLimit uint64  `bson:"gaslimit"`
-	TxFee string `bson:"txfee"`
+	// TxFee string `bson:"txfee"`
 
 
 

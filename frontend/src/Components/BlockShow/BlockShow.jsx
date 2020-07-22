@@ -43,6 +43,9 @@ const BlockShow = ({ match }) => {
               <li>
                 <span>Nonce:</span>{block.Nonce}
               </li>
+              <li>
+                <span>TimeStamp:</span>{block.Timestamp}
+              </li>
             </ul> 
             <hr />
           <div className={styles.transactionsWrapper}>

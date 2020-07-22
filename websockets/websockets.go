@@ -101,6 +101,8 @@ func addBlockToDb(b *typehelper.BlockData, c *mongo.Collection, t *mongo.Collect
 		_, err3 := t.InsertMany(ctx, txs)
 		if err3 != nil {
 			spew.Dump(err3)
+			spew.Dump("Add tx to db")
+
 		}
 	}
 	spew.Dump(blockDataResult)

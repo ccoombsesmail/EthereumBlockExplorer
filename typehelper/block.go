@@ -3,14 +3,16 @@ package typehelper
 import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"strconv"
+	"time"
 )
 
 
 func StructureBlockData(b *types.Block) (*BlockData, []interface{})  {
-		var nonce = b.Nonce()
-		if nonce >= 184467440737 {
-			nonce = 18446744     
-		}
+		// var nonce = b.Nonce()
+		// if nonce >= 184467440737 {
+		// 	nonce = 18446744     
+		// }
 
 		formatedTransactions := make([]TransactionData, 0)
 		var transactionsInt []interface{}
@@ -21,12 +23,12 @@ func StructureBlockData(b *types.Block) (*BlockData, []interface{})  {
 			transactionsInt = append(transactionsInt, *StructureTransactionData(tx))
 		}
 		
-			
+			// strconv.FormatUint(b.Nonce(), 10)
 		block := &BlockData {
 			Hash: b.Hash().Hex(),
 			Number: b.Number().Uint64(),
-			Timestamp: b.Time(),
-			Nonce: nonce,             
+			Timestamp: time.Unix(int64(b.Time()), 0),
+			Nonce:  strconv.FormatUint(b.Nonce(), 10),             
 			Transactions: formatedTransactions }
 		return block, transactionsInt
 	}
@@ -35,8 +37,8 @@ func StructureBlockData(b *types.Block) (*BlockData, []interface{})  {
 	type BlockData struct {
 	ID   primitive.ObjectID `bson:"_id,omitempty"`
 	Hash string  `bson:"hash"`
-	Number uint64  `bson:"number,omitempty"`
-	Timestamp uint64  `bson:"timestamp,omitempty"`
-	Nonce uint64  `bson:"nonce,omitempty"`
-	Transactions []TransactionData `bson:"transactions,omitempty"`
+	Number uint64  `bson:"number"`
+	Timestamp time.Time  `bson:"timestamp"`
+	Nonce string  `bson:"nonce"`
+	Transactions []TransactionData `bson:"transactions"`
 }

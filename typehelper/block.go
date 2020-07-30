@@ -9,10 +9,6 @@ import (
 
 
 func StructureBlockData(b *types.Block) (*BlockData, []interface{})  {
-		// var nonce = b.Nonce()
-		// if nonce >= 184467440737 {
-		// 	nonce = 18446744     
-		// }
 
 		formatedTransactions := make([]TransactionData, 0)
 		var transactionsInt []interface{}

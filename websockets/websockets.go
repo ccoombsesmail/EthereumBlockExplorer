@@ -80,7 +80,6 @@ func SubToBlockHeader(blocksCollection *mongo.Collection, transactionsCollection
 			
 			select {
 				case broadcast <- *blockData:
-					fmt.Println("received")
 					addBlockToDb(blockData, blocksCollection, transactionsCollection, transactions)	
 				default:
 					addBlockToDb(blockData, blocksCollection, transactionsCollection, transactions)	
@@ -95,13 +94,11 @@ func addBlockToDb(b *typehelper.BlockData, c *mongo.Collection, t *mongo.Collect
 	blockDataResult, err2 := c.InsertOne(ctx, *b)
 	if err2 != nil {
 		spew.Dump(err2)
-		spew.Dump("Add block to db")
 	}
 	if len(txs) != 0 {
 		_, err3 := t.InsertMany(ctx, txs)
 		if err3 != nil {
 			spew.Dump(err3)
-			spew.Dump("Add tx to db")
 
 		}
 	}

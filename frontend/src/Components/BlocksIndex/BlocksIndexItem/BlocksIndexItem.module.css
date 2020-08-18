@@ -23,7 +23,7 @@
   
 }
 .block:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   background-color: #474f5e;
   position: relative;
   z-index: 999999 !important;

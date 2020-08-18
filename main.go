@@ -21,7 +21,7 @@ func main() {
 	// Connect to mongodb 
 	var mongoURI string
 	if (os.Getenv("MONGODB_URI") == "") {
-		// mongoURI = "mongodb+srv://user1:" + config.GetKey() + "@cluster0.4mnma.mongodb.net/<blockHistoryDB>?retryWrites=true&w=majority"
+		//mongoURI = "mongodb+srv://user1:" + config.GetKey() + "@cluster0.4mnma.mongodb.net/<blockHistoryDB>?retryWrites=true&w=majority"
 		mongoURI = ""
 	} else {
 		mongoURI = os.Getenv("MONGODB_URI")
